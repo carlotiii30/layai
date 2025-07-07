@@ -16,16 +16,21 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v3
+    - name: Set up Python
+      uses: actions/setup-python@v4
       with:
-        node-version: '16'
+        python-version: '3.9'
+
+    - name: Install Poetry
+      run: |
+        curl -sSL https://install.python-poetry.org | python3 -
+        export PATH="$HOME/.local/bin:$PATH"
 
     - name: Install dependencies
-      run: npm install
+      run: poetry install
 
     - name: Run tests
-      run: npm test
+      run: poetry run pytest
 
     - name: Lint code
-      run: npm run lint
+      run: poetry run flake8
