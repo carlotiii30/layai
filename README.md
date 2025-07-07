@@ -3,7 +3,6 @@
 ![GitHub last commit](https://img.shields.io/github/last-commit/carlotiii30/layai)
 ![GitHub repo size](https://img.shields.io/github/repo-size/carlotiii30/layai)
 ![GitHub issues](https://img.shields.io/github/issues/carlotiii30/layai)
-![GitHub](https://img.shields.io/github/license/carlotiii30/layai)
 
 > **Layai: Transform your content into beautiful, structured layouts with the power of AI.**
 
