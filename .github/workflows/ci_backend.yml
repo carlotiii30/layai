@@ -26,6 +26,9 @@ jobs:
         curl -sSL https://install.python-poetry.org | python3 -
         export PATH="$HOME/.local/bin:$PATH"
 
+    - name: Change to backend directory
+      run: cd layai-backend
+
     - name: Install dependencies
       run: poetry install
 
