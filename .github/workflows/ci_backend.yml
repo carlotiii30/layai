@@ -26,14 +26,25 @@ jobs:
         curl -sSL https://install.python-poetry.org | python3 -
         export PATH="$HOME/.local/bin:$PATH"
 
-    - name: Change to backend directory
-      run: cd layai-backend
+    - name: Cache Poetry dependencies
+      uses: actions/cache@v3
+      with:
+        path: ~/.cache/pypoetry
+        key: ${{ runner.os }}-poetry-${{ hashFiles('**/poetry.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-poetry-
+    - name: Prepare poetry
+      working-directory: layai-backend
+      run: poetry lock
 
     - name: Install dependencies
-      run: poetry install
+      working-directory: layai-backend
+      run: poetry install --no-root
 
     - name: Run tests
+      working-directory: layai-backend
       run: poetry run pytest
 
     - name: Lint code
+      working-directory: layai-backend
       run: poetry run flake8
