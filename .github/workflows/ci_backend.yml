@@ -27,7 +27,7 @@ jobs:
         export PATH="$HOME/.local/bin:$PATH"
 
     - name: Install dependencies
-      run: cd layai-backend && poetry install
+      run: cd layai-backend && poetry install --no-root
 
     - name: Run tests
       run: cd layai-backend && poetry run pytest
