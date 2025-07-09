@@ -27,17 +27,17 @@ jobs:
         export PATH="$HOME/.local/bin:$PATH"
 
     - name: Prepare poetry
-      working-directory: layai-backend
+      working-directory: backend
       run: poetry lock
 
     - name: Install dependencies
-      working-directory: layai-backend
+      working-directory: backend
       run: poetry install --no-root
 
     - name: Run tests
-      working-directory: layai-backend
-      run: poetry run pytest
+      working-directory: backend
+      run: poetry run pytest -s
 
     - name: Lint code
-      working-directory: layai-backend
+      working-directory: backend
       run: poetry run flake8
