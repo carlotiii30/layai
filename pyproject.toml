@@ -1,0 +1,29 @@
+[tool.poetry]
+name = "layai"
+version = "0.1.0"
+description = ""
+authors = ["Carlota de la Vega <carlotadlavega@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+fastapi = "^0.116.0"
+uvicorn = "^0.35.0"
+pydantic = "^2.11.7"
+jinja2 = "^3.1.6"
+httpx = "^0.28.1"
+
+
+[tool.poetry.group.dev.dependencies]
+black = "^25.1.0"
+isort = "^6.0.1"
+ruff = "^0.12.2"
+pytest = "^8.4.1"
+flake8 = "^7.3.0"
+
+[tool.flake8]
+max-line-length = 120
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Generated Document</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 60px; max-width: 800px; margin-left: auto; margin-right: auto; line-height: 1.6; }
+    h1, h2 { text-align: center; }
+    p, ul { text-align: justify; }
+    figure { text-align: center; margin: 40px 0; }
+    figcaption { font-size: 0.9em; color: #555; }
+    footer { margin-top: 60px; font-size: 0.8em; text-align: center; color: #888; }
+  </style>
+</head>
+<body>
+  {% for elem in elements %}
+    {% if elem.type == 'title' %}
+      <h1>{{ elem.content }}</h1>
+    {% elif elem.type == 'subtitle' %}
+      <h2>{{ elem.content }}</h2>
+    {% elif elem.type == 'paragraph' %}
+      <p>{{ elem.content }}</p>
+    {% elif elem.type == 'image' %}
+      <figure>
+        <img src="{{ elem.src }}" alt="Image" width="500" />
+        <figcaption>{{ elem.caption }}</figcaption>
+      </figure>
+    {% elif elem.type == 'list' %}
+      <ul>
+        {% for item in elem.list_items %}
+          <li>{{ item }}</li>
+        {% endfor %}
+      </ul>
+    {% elif elem.type == 'footer' %}
+      <footer>{{ elem.content }}</footer>
+    {% endif %}
+  {% endfor %}
+</body>
+</html>

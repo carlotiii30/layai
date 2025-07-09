@@ -1,0 +1,12 @@
+{
+    "classic_centered": {
+        "name": "Classic Centered",
+        "description": "Centered layout ideal for clean, structured reports.",
+        "file": "classic_centered.html.j2"
+    },
+    "columns_newspaper": {
+        "name": "Columns Newspaper",
+        "description": "Two-column layout suitable for long, magazine-like documents.",
+        "file": "columns_newspaper.html.j2"
+    }
+}
