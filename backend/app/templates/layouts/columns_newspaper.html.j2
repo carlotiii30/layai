@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Generated Document - Columns</title>
+  <style>
+    body { font-family: Georgia, serif; margin: 50px; line-height: 1.6; }
+    header { text-align: left; margin-bottom: 30px; }
+    h1 { font-size: 32px; margin-bottom: 10px; }
+    h2 { font-size: 20px; color: #555; }
+    .columns { column-count: 2; column-gap: 40px; text-align: justify; }
+    figure { break-inside: avoid; margin: 30px 0; text-align: center; }
+    figcaption { font-size: 0.9em; color: #666; }
+    footer { margin-top: 40px; font-size: 0.8em; color: #888; text-align: right; }
+  </style>
+</head>
+<body>
+  <header>
+    {% for elem in elements %}
+      {% if elem.type == 'title' %}
+        <h1>{{ elem.content }}</h1>
+      {% elif elem.type == 'subtitle' %}
+        <h2>{{ elem.content }}</h2>
+      {% endif %}
+    {% endfor %}
+  </header>
+
+  <div class="columns">
+    {% for elem in elements %}
+      {% if elem.type == 'paragraph' %}
+        <p>{{ elem.content }}</p>
+      {% elif elem.type == 'image' %}
+        <figure>
+          <img src="{{ elem.src }}" alt="Image" width="100%">
+          <figcaption>{{ elem.caption }}</figcaption>
+        </figure>
+      {% elif elem.type == 'list' %}
+        <ul>
+          {% for item in elem.list_items %}
+            <li>{{ item }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endfor %}
+  </div>
+
+  {% for elem in elements %}
+    {% if elem.type == 'footer' %}
+      <footer>{{ elem.content }}</footer>
+    {% endif %}
+  {% endfor %}
+</body>
+</html>

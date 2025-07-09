@@ -19,7 +19,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
-        python-version: '3.9'
+        python-version: '3.10'
 
     - name: Install Poetry
       run: |
@@ -33,18 +33,19 @@ jobs:
         key: ${{ runner.os }}-poetry-${{ hashFiles('**/poetry.lock') }}
         restore-keys: |
           ${{ runner.os }}-poetry-
+
     - name: Prepare poetry
-      working-directory: layai-backend
+      working-directory: backend
       run: poetry lock
 
     - name: Install dependencies
-      working-directory: layai-backend
+      working-directory: backend
       run: poetry install --no-root
 
     - name: Run tests
-      working-directory: layai-backend
-      run: poetry run pytest
+      working-directory: backend
+      run: poetry run pytest -s
 
     - name: Lint code
-      working-directory: layai-backend
+      working-directory: backend
       run: poetry run flake8
